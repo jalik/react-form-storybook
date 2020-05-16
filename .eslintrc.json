@@ -1,0 +1,26 @@
+{
+  "env": {
+    "browser": true,
+    "es6": true,
+    "jest": true,
+    "node": true
+  },
+  "extends": [
+    "airbnb",
+    "airbnb/hooks"
+  ],
+  "parser": "babel-eslint",
+  "plugins": [
+    "import",
+    "jsx-a11y",
+    "react",
+    "react-hooks"
+  ],
+  "rules": {
+    "import/prefer-default-export": "warn",
+    "import/no-extraneous-dependencies": "warn",
+    "jsx-a11y/label-has-associated-control": "warn",
+    "react/jsx-filename-extension": "off",
+    "react/jsx-props-no-spreading": "off"
+  }
+}

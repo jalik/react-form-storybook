@@ -1,0 +1,6 @@
+# Project settings
+/.idea/
+*.iml
+
+# Dependencies
+/node_modules/
