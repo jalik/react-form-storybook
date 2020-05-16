@@ -30,7 +30,7 @@ import {
 import prettyBytes from 'pretty-bytes';
 import React from 'react';
 import { FormGroup } from 'reactstrap';
-import FormError from './FormError';
+import FormError from '../FormError';
 import FormControl from './FormControl';
 
 function FileSection() {

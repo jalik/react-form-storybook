@@ -23,22 +23,40 @@
  *
  */
 
-import Schema from '@jalik/schema';
+import {
+  node,
+  string,
+} from 'prop-types';
+import React from 'react';
+import { slugify } from '../libs/utils';
+import FormError from './FormError';
+import FormControl from './sections/FormControl';
 
-const EmailSchema = new Schema({
-  address: {
-    type: 'string',
-    required: true,
-    format: 'email',
-  },
-  enabled: {
-    type: 'boolean',
-    defaultValue: false,
-  },
-  private: {
-    type: 'boolean',
-    required: true,
-  },
-});
+function FormField({ children, label, name, ...props }) {
+  const fieldId = `${slugify(name)}Field`;
+  return (
+    <>
+      <label htmlFor={fieldId}>{label}</label>
+      <FormControl
+        {...props}
+        id={fieldId}
+        name={name}
+      >
+        {children}
+      </FormControl>
+      <FormError name={name} />
+    </>
+  );
+}
 
-export default EmailSchema;
+FormField.propTypes = {
+  children: node,
+  label: string.isRequired,
+  name: string.isRequired,
+};
+
+FormField.defaultProps = {
+  children: null,
+};
+
+export default FormField;

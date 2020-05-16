@@ -29,8 +29,8 @@ import {
 } from '@jalik/react-form';
 import React from 'react';
 import { FormGroup } from 'reactstrap';
-import { phoneCountryCodes } from '../libs/values';
-import FormError from './FormError';
+import { phoneCountryCodes } from '../../libs/values';
+import FormError from '../FormError';
 import FormControl from './FormControl';
 
 function parsePhoneNumber(phone) {
@@ -87,7 +87,7 @@ function PhoneSection() {
           <FormGroup key={key}>
             <div className="input-group">
               <FormControl
-                disabledOptionLabel="Code"
+                emptyOptionLabel="Select a code..."
                 name={`phones[${index}].code`}
                 options={phoneCountryCodes}
                 type="select"

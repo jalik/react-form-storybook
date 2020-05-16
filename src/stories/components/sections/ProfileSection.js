@@ -31,14 +31,14 @@ import {
   parseBoolean,
   parseString,
   uppercase,
-} from '../libs/utils';
+} from '../../libs/utils';
 import {
   genders,
   maritalStatuses,
-} from '../libs/values';
-import BsField from './BsField';
-import FormError from './FormError';
-import BsFormCheck from './BsFormCheck';
+} from '../../libs/values';
+import FormField from '../FormField';
+import FormError from '../FormError';
+import FormCheck from '../FormCheck';
 import FormControl from './FormControl';
 
 function ProfileSection() {
@@ -50,7 +50,7 @@ function ProfileSection() {
       <div className="form-row">
         <div className="col">
           <FormGroup>
-            <BsField
+            <FormField
               label="First names"
               name="profile.firstNames"
               parser={capitalizeWords}
@@ -59,7 +59,7 @@ function ProfileSection() {
         </div>
         <div className="col">
           <FormGroup>
-            <BsField
+            <FormField
               label="Last name"
               name="profile.lastName"
               parser={uppercase}
@@ -70,7 +70,7 @@ function ProfileSection() {
       <div className="form-row">
         <div className="col">
           <FormGroup>
-            <BsField
+            <FormField
               label="Birth date"
               name="profile.birthDate"
               type="date"
@@ -79,7 +79,7 @@ function ProfileSection() {
         </div>
         <div className="col">
           <FormGroup>
-            <BsField
+            <FormField
               label="Birth time"
               name="profile.birthTime"
               type="time"
@@ -93,7 +93,7 @@ function ProfileSection() {
             <div className="col">
               <FormGroup>
                 {genders.map(({ label, value }) => (
-                  <BsFormCheck
+                  <FormCheck
                     key={label}
                     label={label}
                     name="profile.gender"
@@ -115,7 +115,7 @@ function ProfileSection() {
             <div className="col">
               <FormGroup>
                 {maritalStatuses.map(({ label, value }) => (
-                  <BsFormCheck
+                  <FormCheck
                     key={label}
                     label={label}
                     name="profile.married"

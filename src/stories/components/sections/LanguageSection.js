@@ -25,33 +25,45 @@
 
 import React from 'react';
 import { FormGroup } from 'reactstrap';
-import { capitalize } from '../libs/utils';
-import { countries } from '../libs/values';
-import BsField from './BsField';
+import { languages } from '../../libs/values';
+import FormError from '../FormError';
+import FormCheck from '../FormCheck';
+import FormControl from './FormControl';
 
-function AddressSection() {
+function LanguageSection() {
   return (
     <fieldset>
-      <legend>Address</legend>
+      <legend>Languages</legend>
 
-      <FormGroup>
-        <BsField
-          label="Country"
-          name="address.country"
-          options={countries}
-          type="select"
-        />
-      </FormGroup>
-      <FormGroup>
-        <BsField
-          label="Street"
-          name="address.street"
-          parser={capitalize}
-          type="textarea"
-        />
-      </FormGroup>
+      <div className="row">
+        <div className="col">
+          <FormGroup>
+            {languages.map(({ label, value }) => (
+              <FormCheck
+                key={label}
+                label={label}
+                name="languages"
+                type="checkbox"
+                value={value}
+              />
+            ))}
+            <FormError name="languages" />
+          </FormGroup>
+        </div>
+        <div className="col">
+          <FormGroup>
+            <FormControl
+              multiple
+              name="languages"
+              type="select"
+              options={languages}
+            />
+            <FormError name="languages" />
+          </FormGroup>
+        </div>
+      </div>
     </fieldset>
   );
 }
 
-export default AddressSection;
+export default LanguageSection;

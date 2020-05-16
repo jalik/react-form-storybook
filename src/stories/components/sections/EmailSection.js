@@ -30,9 +30,9 @@ import {
 } from '@jalik/react-form';
 import React from 'react';
 import { FormGroup } from 'reactstrap';
-import { parseBoolean } from '../libs/utils';
-import FormError from './FormError';
-import BsFormCheck from './BsFormCheck';
+import { parseBoolean } from '../../libs/utils';
+import FormError from '../FormError';
+import FormCheck from '../FormCheck';
 import FormControl from './FormControl';
 
 function parseEmailAddress(email) {
@@ -122,7 +122,7 @@ function EmailSection() {
               </div>
             </div>
             <div className="mt-2">
-              <BsFormCheck
+              <FormCheck
                 disabled={!email.address}
                 inline
                 label="Enabled"
@@ -131,7 +131,7 @@ function EmailSection() {
                 type="checkbox"
                 value
               />
-              <BsFormCheck
+              <FormCheck
                 disabled={!email.address}
                 inline
                 label="Public"
@@ -140,7 +140,7 @@ function EmailSection() {
                 type="radio"
                 value={false}
               />
-              <BsFormCheck
+              <FormCheck
                 disabled={!email.address}
                 inline
                 label="Private"
@@ -149,7 +149,7 @@ function EmailSection() {
                 type="radio"
                 value
               />
-              <BsFormCheck
+              <FormCheck
                 disabled={!email.address}
                 inline
                 label="Default"

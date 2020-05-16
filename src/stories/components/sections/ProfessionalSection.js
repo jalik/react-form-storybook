@@ -25,45 +25,53 @@
 
 import React from 'react';
 import { FormGroup } from 'reactstrap';
-import { languages } from '../libs/values';
-import FormError from './FormError';
-import BsFormCheck from './BsFormCheck';
+import { currencies } from '../../libs/values';
+import FormField from '../FormField';
+import FormError from '../FormError';
 import FormControl from './FormControl';
 
-function LanguageSection() {
+function ProfessionalSection() {
   return (
     <fieldset>
-      <legend>Languages</legend>
+      <legend>Professional</legend>
 
-      <div className="row">
-        <div className="col">
-          <FormGroup>
-            {languages.map(({ label, value }) => (
-              <BsFormCheck
-                key={label}
-                label={label}
-                name="languages"
-                type="checkbox"
-                value={value}
-              />
-            ))}
-            <FormError name="languages" />
-          </FormGroup>
+      <FormGroup>
+        <label>Income</label>
+        <div className="input-group">
+          <FormControl
+            name="professional.income.amount"
+            max={1000000}
+            step={10000}
+            type="number"
+          />
+          <FormControl
+            emptyOptionLabel="Currency"
+            name="professional.income.currency"
+            options={currencies}
+            type="select"
+          />
         </div>
-        <div className="col">
-          <FormGroup>
-            <FormControl
-              multiple
-              name="languages"
-              type="select"
-              options={languages}
-            />
-            <FormError name="languages" />
-          </FormGroup>
-        </div>
-      </div>
+        <FormError name="professional.income.amount" />
+        <FormError name="professional.income.currency" />
+      </FormGroup>
+      <FormGroup>
+        <FormField
+          label="Income (range)"
+          name="professional.income.amount"
+          max={1000000}
+          step={10000}
+          type="range"
+        />
+      </FormGroup>
+      <FormGroup>
+        <FormField
+          label="Website"
+          name="professional.website"
+          type="url"
+        />
+      </FormGroup>
     </fieldset>
   );
 }
 
-export default LanguageSection;
+export default ProfessionalSection;

@@ -28,6 +28,7 @@ import {
   any,
   arrayOf,
   bool,
+  node,
   oneOfType,
   shape,
   string,
@@ -35,7 +36,7 @@ import {
 import React from 'react';
 import { Input } from 'reactstrap';
 
-function FormControl({ options, type, ...props }) {
+function FormControl({ children, type, ...props }) {
   return (
     <Field
       {...props}
@@ -43,19 +44,13 @@ function FormControl({ options, type, ...props }) {
       component={Input}
       type={type}
     >
-      {options instanceof Array ? (
-        options.map(({ label, value }) => (
-          <option
-            key={value}
-            value={value}
-          >{label}</option>
-        ))
-      ) : null}
+      {children}
     </Field>
   );
 }
 
 FormControl.propTypes = {
+  children: node,
   name: string.isRequired,
   options: arrayOf(oneOfType([
     any,
@@ -69,6 +64,7 @@ FormControl.propTypes = {
 };
 
 FormControl.defaultProps = {
+  children: null,
   options: null,
   type: 'text',
 };

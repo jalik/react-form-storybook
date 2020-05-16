@@ -23,30 +23,38 @@
  *
  */
 
-import { string } from 'prop-types';
 import React from 'react';
-import { slugify } from '../libs/utils';
-import FormError from './FormError';
-import FormControl from './FormControl';
+import { FormGroup } from 'reactstrap';
+import { capitalize } from '../../libs/utils';
+import { countries } from '../../libs/values';
+import FormField from '../FormField';
 
-function BsField({ label, name, ...props }) {
-  const fieldId = `${slugify(name)}Field`;
+function AddressSection() {
   return (
-    <>
-      <label htmlFor={fieldId}>{label}</label>
-      <FormControl
-        {...props}
-        id={fieldId}
-        name={name}
-      />
-      <FormError name={name} />
-    </>
+    <fieldset>
+      <legend>Address</legend>
+
+      <FormGroup>
+        <FormField
+          label="Country"
+          name="address.country"
+          options={countries}
+          type="select"
+        >
+          {/* Use a custom option */}
+          <option value="">Select a country...</option>
+        </FormField>
+      </FormGroup>
+      <FormGroup>
+        <FormField
+          label="Street"
+          name="address.street"
+          parser={capitalize}
+          type="textarea"
+        />
+      </FormGroup>
+    </fieldset>
   );
 }
 
-BsField.propTypes = {
-  label: string.isRequired,
-  name: string.isRequired,
-};
-
-export default BsField;
+export default AddressSection;

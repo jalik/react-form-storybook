@@ -32,9 +32,9 @@ import { FormGroup } from 'reactstrap';
 import {
   checkPassword,
   checkUsernameAsync,
-} from '../libs/checks';
-import BsField from './BsField';
-import FormError from './FormError';
+} from '../../libs/checks';
+import FormField from '../FormField';
+import FormError from '../FormError';
 import FormControl from './FormControl';
 
 function GeneralSection() {
@@ -50,7 +50,7 @@ function GeneralSection() {
       <legend>General</legend>
 
       <FormGroup>
-        <BsField
+        <FormField
           label="Username"
           name="username"
           validator={checkUsernameAsync}

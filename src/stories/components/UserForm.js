@@ -39,14 +39,14 @@ import React, {
 } from 'react';
 import { countryCurrency } from '../libs/values';
 import UserSchema from '../schemas/UserSchema';
-import AddressSection from './AddressSection';
-import EmailSection from './EmailSection';
-import FileSection from './FileSection';
-import GeneralSection from './GeneralSection';
-import LanguageSection from './LanguageSection';
-import PhoneSection from './PhoneSection';
-import ProfessionalSection from './ProfessionalSection';
-import ProfileSection from './ProfileSection';
+import AddressSection from './sections/AddressSection';
+import EmailSection from './sections/EmailSection';
+import FileSection from './sections/FileSection';
+import GeneralSection from './sections/GeneralSection';
+import LanguageSection from './sections/LanguageSection';
+import PhoneSection from './sections/PhoneSection';
+import ProfessionalSection from './sections/ProfessionalSection';
+import ProfileSection from './sections/ProfileSection';
 
 const UserSchemaValidator = new SchemaValidator({
   // Returns field attributes.

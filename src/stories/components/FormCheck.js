@@ -36,7 +36,7 @@ import {
 import React from 'react';
 import { slugify } from '../libs/utils';
 
-function BsFormCheck(
+function FormCheck(
   {
     inline,
     label,
@@ -67,7 +67,7 @@ function BsFormCheck(
   );
 }
 
-BsFormCheck.propTypes = {
+FormCheck.propTypes = {
   inline: bool,
   label: node.isRequired,
   name: string.isRequired,
@@ -75,9 +75,9 @@ BsFormCheck.propTypes = {
   value: oneOfType([array, bool, number, string]),
 };
 
-BsFormCheck.defaultProps = {
+FormCheck.defaultProps = {
   inline: false,
   value: null,
 };
 
-export default BsFormCheck;
+export default FormCheck;
