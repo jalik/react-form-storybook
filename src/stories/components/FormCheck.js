@@ -34,11 +34,11 @@ import {
   string,
 } from 'prop-types';
 import React from 'react';
+import { CustomInput } from 'reactstrap';
 import { slugify } from '../libs/utils';
 
 function FormCheck(
   {
-    inline,
     label,
     name,
     type,
@@ -48,27 +48,19 @@ function FormCheck(
 ) {
   const id = `${slugify(name)}_${slugify(String(value))}_field`;
   return (
-    <div className={`custom-control custom-${type} ${inline ? 'custom-control-inline' : ''}`}>
-      <Field
-        className="custom-control-input"
-        id={id}
-        name={name}
-        type={type}
-        value={value}
-        {...props}
-      />
-      <label
-        className="custom-control-label"
-        htmlFor={id}
-      >
-        {label}
-      </label>
-    </div>
+    <Field
+      {...props}
+      component={CustomInput}
+      id={id}
+      label={label}
+      name={name}
+      type={type}
+      value={value}
+    />
   );
 }
 
 FormCheck.propTypes = {
-  inline: bool,
   label: node.isRequired,
   name: string.isRequired,
   type: oneOf(['checkbox', 'radio']).isRequired,
@@ -76,7 +68,6 @@ FormCheck.propTypes = {
 };
 
 FormCheck.defaultProps = {
-  inline: false,
   value: null,
 };
 

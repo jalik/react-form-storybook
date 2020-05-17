@@ -34,14 +34,16 @@ import {
   string,
 } from 'prop-types';
 import React from 'react';
-import { Input } from 'reactstrap';
+import {
+  CustomInput,
+  Input,
+} from 'reactstrap';
 
 function FormControl({ children, type, ...props }) {
   return (
     <Field
       {...props}
-      className={type === 'select' ? 'custom-select' : 'form-control'}
-      component={Input}
+      component={['checkbox', 'radio', 'range', 'select'].indexOf(type) !== -1 ? CustomInput : Input}
       type={type}
     >
       {children}
