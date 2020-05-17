@@ -33,8 +33,8 @@ import {
   checkPassword,
   checkUsernameAsync,
 } from '../../libs/checks';
-import FormField from '../FormField';
 import FormError from '../FormError';
+import FormField from '../FormField';
 import FormControl from './FormControl';
 
 function GeneralSection() {
@@ -62,10 +62,25 @@ function GeneralSection() {
             <label htmlFor="passwordField">
               Password
             </label>
+            <FormControl
+              id="passwordField"
+              name="password"
+              type={passwordVisible ? 'text' : 'password'}
+              validator={checkPassword}
+            />
+            <FormError name="password" />
+          </FormGroup>
+        </div>
+        <div className="col">
+          <FormGroup>
+            <label htmlFor="passwordConfirmField">
+              Password confirmation
+            </label>
             <div className="input-group">
               <FormControl
-                id="passwordField"
-                name="password"
+                disabled={getValue('password', '').length === 0}
+                id="passwordConfirmField"
+                name="passwordConfirm"
                 type={passwordVisible ? 'text' : 'password'}
                 validator={checkPassword}
               />
@@ -83,21 +98,6 @@ function GeneralSection() {
                 </Button>
               </div>
             </div>
-            <FormError name="password" />
-          </FormGroup>
-        </div>
-        <div className="col">
-          <FormGroup>
-            <label htmlFor="passwordConfirmField">
-              Password confirmation
-            </label>
-            <FormControl
-              disabled={getValue('password', '').length === 0}
-              id="passwordConfirmField"
-              name="passwordConfirm"
-              type={passwordVisible ? 'text' : 'password'}
-              validator={checkPassword}
-            />
             <FormError name="passwordConfirm" />
           </FormGroup>
         </div>
