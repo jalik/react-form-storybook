@@ -104,14 +104,14 @@ function EmailSection() {
                   disabled={index === emails.fields.length - 1}
                   onClick={handleMoveDown(index)}
                 >
-                  <i className="fas fa-fw fa-arrow-down" />
+                  <i className="fas fa-fw fa-arrow-circle-down" />
                 </Button>
                 <Button
                   className="btn btn-secondary"
                   disabled={index === 0}
                   onClick={handleMoveUp(index)}
                 >
-                  <i className="fas fa-fw fa-arrow-up" />
+                  <i className="fas fa-fw fa-arrow-circle-up" />
                 </Button>
                 <Button
                   className="btn btn-secondary"
