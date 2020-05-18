@@ -23,6 +23,8 @@
  *
  */
 
+import SchemaValidator from '@jalik/react-form/dist/SchemaValidator';
+
 export function capitalize(text) {
   return typeof text === 'string' && text.length > 0
     ? text.substr(0, 1).toUpperCase() + text.substr(1)
@@ -33,6 +35,38 @@ export function capitalizeWords(text) {
   return typeof text === 'string' && text.length > 0
     ? text.split(' ').map(capitalize).join(' ')
     : text;
+}
+
+export function createSchemaValidator(schema) {
+  return new SchemaValidator({
+    // Returns field attributes.
+    getAttributes(name) {
+      const field = schema.getField(name);
+      return field ? {
+        max: field.getMax(),
+        min: field.getMin(),
+        maxLength: field.getMaxLength(),
+        minLength: field.getMinLength(),
+        pattern: field.getPattern(),
+        required: field.isRequired(),
+      } : null;
+    },
+    // Validate all fields (including nested elements).
+    validate(values) {
+      return new Promise((resolve) => {
+        setTimeout(() => {
+          resolve(schema.getErrors(values));
+        }, 1000);
+      });
+    },
+    // Validate a single field (excluding nested elements).
+    validateField(value, name, values) {
+      return schema.getField(name).validate(value, {
+        context: values,
+        rootOnly: true,
+      });
+    },
+  });
 }
 
 export function doSubmit(values) {
