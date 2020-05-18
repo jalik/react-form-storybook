@@ -31,6 +31,7 @@ import React, {
 } from 'react';
 import '../styles/styles.css';
 import UserForm from './components/forms/UserForm';
+import { doSubmit } from './libs/utils';
 
 const initialValues = {
   address: {
@@ -62,24 +63,6 @@ const initialValues = {
   },
   username: 'jalik',
 };
-
-function doSubmit(values) {
-  // eslint-disable-next-line no-console
-  console.log('SUBMIT', values);
-  return new Promise((resolve, reject) => {
-    setTimeout(() => {
-      // Simulate network error randomly.
-      if (Math.round(Math.random()) === 1) {
-        reject(Error('Network error'));
-      } else {
-        resolve({
-          status: 200,
-          success: true,
-        });
-      }
-    }, 1000);
-  });
-}
 
 const emptyValues = {
   address: {},

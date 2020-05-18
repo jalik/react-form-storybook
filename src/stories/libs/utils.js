@@ -35,6 +35,24 @@ export function capitalizeWords(text) {
     : text;
 }
 
+export function doSubmit(values) {
+  // eslint-disable-next-line no-console
+  console.log('SUBMIT', values);
+  return new Promise((resolve, reject) => {
+    setTimeout(() => {
+      // Simulate network error randomly.
+      if (Math.round(Math.random()) === 1) {
+        reject(Error('Network error'));
+      } else {
+        resolve({
+          status: 200,
+          success: true,
+        });
+      }
+    }, 1000);
+  });
+}
+
 export function generateFieldId(name, value = '') {
   // eslint-disable-next-line no-use-before-define
   return `${slugify(name)}_${slugify(String(value))}_field`;
