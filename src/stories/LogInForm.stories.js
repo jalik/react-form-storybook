@@ -27,19 +27,19 @@ import '@fortawesome/fontawesome-free/css/all.css';
 import 'bootstrap/dist/css/bootstrap.css';
 import React from 'react';
 import '../styles/styles.css';
-import LoginForm from './components/forms/LoginForm';
+import LogInForm from './components/forms/LogInForm';
 import { doSubmit } from './libs/utils';
 
-export const LoginFormExample = () => {
+export function LogInFormExample() {
   return (
-    <LoginForm
+    <LogInForm
       onSubmit={doSubmit}
       values={{}}
     />
   );
-};
+}
 
 export default {
-  title: 'Login Form',
-  component: LoginFormExample,
+  title: 'Log In Form',
+  component: LogInFormExample,
 };

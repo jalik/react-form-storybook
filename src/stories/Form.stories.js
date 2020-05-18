@@ -84,7 +84,7 @@ export const FilledUserFormExample = () => (
   />
 );
 
-export const LoadingUserFormExample = () => {
+export function LoadingUserFormExample() {
   const [data, setData] = useState(null);
 
   // Simulate loading of data.
@@ -99,7 +99,7 @@ export const LoadingUserFormExample = () => {
       values={data}
     />
   );
-};
+}
 
 export default {
   title: 'User Form',

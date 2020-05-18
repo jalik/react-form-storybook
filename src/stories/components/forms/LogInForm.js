@@ -33,7 +33,7 @@ export const LoginFormSchema = new Schema({
 
 const LoginFormSchemaValidator = createSchemaValidator(LoginFormSchema);
 
-function LoginForm({ onSubmit, values }) {
+function LogInForm({ onSubmit, values }) {
   const form = useForm({
     initialValues: values,
     onSubmit,
@@ -71,14 +71,14 @@ function LoginForm({ onSubmit, values }) {
   );
 }
 
-LoginForm.propTypes = {
+LogInForm.propTypes = {
   onSubmit: func.isRequired,
   // eslint-disable-next-line react/forbid-prop-types
   values: object,
 };
 
-LoginForm.defaultProps = {
+LogInForm.defaultProps = {
   values: null,
 };
 
-export default LoginForm;
+export default LogInForm;
