@@ -39,6 +39,9 @@ import React, {
 import { countryCurrency } from '../../libs/values';
 import UserSchema from '../../schemas/UserSchema';
 import FormButton from '../FormButton';
+import FormResetButton from '../FormResetButton';
+import FormSubmitButton from '../FormSubmitButton';
+import FormValidateButton from '../FormValidateButton';
 import AddressSection from '../sections/AddressSection';
 import EmailSection from '../sections/EmailSection';
 import FileSection from '../sections/FileSection';
@@ -180,52 +183,9 @@ function UserForm({ onSubmit, values }) {
                   <div className="badge badge-success mr-3">SUBMITTED</div>
                 ) : null}
 
-                <FormButton
-                  className="mr-1"
-                  type="reset"
-                >
-                  <i className="fas fa-fw fa-undo-alt mr-1" />
-                  Reset
-                </FormButton>
-
-                <FormButton
-                  className="mr-1"
-                  disabled={form.validated || form.validating}
-                  onClick={form.validate}
-                >
-                  {form.validating ? (
-                    <i className="fas fa-fw fa-spinner fa-spin mr-1" />
-                  ) : (
-                    <i className="fas fa-fw fa-check mr-1" />
-                  )}
-                  Validate
-                </FormButton>
-
-                <FormButton
-                  color="primary"
-                  type="submit"
-                >
-                  {form.failedCount > 0 ? (
-                    <>
-                      {form.submitting ? (
-                        <i className="fas fa-fw fa-redo-alt fa-spin mr-1" />
-                      ) : (
-                        <i className="fas fa-fw fa-redo-alt mr-1" />
-                      )}
-                      {`Retry (${form.failedCount})`}
-                    </>
-                  ) : (
-                    <>
-                      {form.submitting ? (
-                        <i className="fas fa-fw fa-spinner fa-spin mr-1" />
-                      ) : (
-                        <i className="fas fa-fw fa-paper-plane mr-1" />
-                      )}
-                      Submit
-                    </>
-                  )}
-                </FormButton>
-
+                <FormResetButton />
+                <FormValidateButton />
+                <FormSubmitButton />
               </div>
             </div>
           </div>
