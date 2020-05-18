@@ -40,6 +40,7 @@ import { countryCurrency } from '../../libs/values';
 import UserSchema from '../../schemas/UserSchema';
 import FormButton from '../FormButton';
 import FormResetButton from '../FormResetButton';
+import FormStateBadges from '../FormStateBadges';
 import FormSubmitButton from '../FormSubmitButton';
 import FormValidateButton from '../FormValidateButton';
 import AddressSection from '../sections/AddressSection';
@@ -159,30 +160,7 @@ function UserForm({ onSubmit, values }) {
               </div>
 
               <div className="col">
-                {form.modified ? (
-                  <div className="badge badge-warning mr-3">MODIFIED</div>
-                ) : (
-                  <div className="badge badge-secondary mr-3">UNMODIFIED</div>
-                )}
-
-                {form.validated ? (
-                  <div className="badge badge-primary mr-3">VALIDATED</div>
-                ) : (
-                  <div className="badge badge-danger mr-3">INVALID</div>
-                )}
-
-                {form.submitting ? (
-                  <div className="badge badge-info mr-3">SUBMITTING</div>
-                ) : null}
-
-                {form.failed ? (
-                  <div className="badge badge-danger mr-3">{`FAILED: ${form.failedError.message}`}</div>
-                ) : null}
-
-                {form.submitted ? (
-                  <div className="badge badge-success mr-3">SUBMITTED</div>
-                ) : null}
-
+                <FormStateBadges />
                 <FormResetButton />
                 <FormValidateButton />
                 <FormSubmitButton />
