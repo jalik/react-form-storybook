@@ -63,7 +63,7 @@ function GeneralSection() {
               id="passwordField"
               name="password"
               type={passwordVisible ? 'text' : 'password'}
-              validator={checkPassword}
+              // validator={checkPassword}
             />
             <FormError name="password" />
           </FormGroup>
@@ -79,7 +79,7 @@ function GeneralSection() {
                 id="passwordConfirmField"
                 name="passwordConfirm"
                 type={passwordVisible ? 'text' : 'password'}
-                validator={checkPassword}
+                // validator={checkPassword}
               />
               <div className="input-group-append">
                 <Button

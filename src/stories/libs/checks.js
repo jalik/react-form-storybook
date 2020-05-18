@@ -50,11 +50,11 @@ export function checkUsernameAsync(value) {
   }
   return new Promise((resolve, reject) => {
     setTimeout(() => {
-      if (!/[0-9]$/.test(value)) {
+      if (!/\d$/.test(value)) {
         reject(Error(`username already exists, try to add a number at the end (ex: ${value}1337)`));
       }
       resolve();
-    }, 500);
+    }, 600);
   });
 }
 

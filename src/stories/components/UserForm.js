@@ -101,7 +101,7 @@ function UserForm({ onSubmit, values }) {
     }
   }, [form.modified]);
 
-  console.log('render UserForm');
+  console.log('RENDER UserForm');
 
   return (
     <Form context={form}>
