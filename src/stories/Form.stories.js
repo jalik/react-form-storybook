@@ -30,7 +30,7 @@ import React, {
   useState,
 } from 'react';
 import '../styles/styles.css';
-import UserForm from './components/UserForm';
+import UserForm from './components/forms/UserForm';
 
 const initialValues = {
   address: {
@@ -87,21 +87,21 @@ const emptyValues = {
   profile: {},
 };
 
-export const EmptyFormExample = () => (
+export const EmptyUserFormExample = () => (
   <UserForm
     onSubmit={doSubmit}
     values={emptyValues}
   />
 );
 
-export const FilledFormExample = () => (
+export const FilledUserFormExample = () => (
   <UserForm
     onSubmit={doSubmit}
     values={initialValues}
   />
 );
 
-export const LoadingFormExample = () => {
+export const LoadingUserFormExample = () => {
   const [data, setData] = useState(null);
 
   // Simulate loading of data.
@@ -119,6 +119,6 @@ export const LoadingFormExample = () => {
 };
 
 export default {
-  title: 'Form',
-  component: LoadingFormExample,
+  title: 'User Form',
+  component: LoadingUserFormExample,
 };

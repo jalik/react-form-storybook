@@ -23,13 +23,11 @@
  *
  */
 
-import {
-  Button,
-  useFieldArray,
-} from '@jalik/react-form';
+import { useFieldArray } from '@jalik/react-form';
 import React from 'react';
 import { FormGroup } from 'reactstrap';
 import { phoneCountryCodes } from '../../libs/values';
+import FormButton from '../FormButton';
 import FormError from '../FormError';
 import FormInput from '../FormInput';
 
@@ -59,27 +57,18 @@ function PhoneSection() {
       <legend>Phones</legend>
 
       <div className="btn-group mb-3">
-        <Button
-          className="btn btn-secondary"
-          onClick={phones.handleAppend}
-        >
+        <FormButton onClick={phones.handleAppend}>
           <i className="fas fa-fw fa-plus-circle mr-1" />
           Append
-        </Button>
-        <Button
-          className="btn btn-secondary"
-          onClick={phones.handlePrepend}
-        >
+        </FormButton>
+        <FormButton onClick={phones.handlePrepend}>
           <i className="fas fa-fw fa-plus-circle mr-1" />
           Prepend
-        </Button>
-        <Button
-          className="btn btn-secondary"
-          onClick={handleInsertAt(Math.round(phones.fields.length / 2))}
-        >
+        </FormButton>
+        <FormButton onClick={handleInsertAt(Math.round(phones.fields.length / 2))}>
           <i className="fas fa-fw fa-plus-circle mr-1" />
           Insert at middle
-        </Button>
+        </FormButton>
       </div>
 
       {phones.fields.length > 0 ? (
@@ -98,12 +87,9 @@ function PhoneSection() {
               />
               <FormInput name={`phones[${index}].type`} />
               <div className="input-group-append">
-                <Button
-                  className="btn btn-secondary"
-                  onClick={phones.handleRemove(index)}
-                >
+                <FormButton onClick={phones.handleRemove(index)}>
                   <i className="fas fa-fw fa-trash" />
-                </Button>
+                </FormButton>
               </div>
             </div>
             <FormError name={`phones[${index}].code`} />

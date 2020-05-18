@@ -24,7 +24,6 @@
  */
 
 import {
-  Button,
   Form,
   SchemaValidator,
   useForm,
@@ -37,16 +36,17 @@ import React, {
   useEffect,
   useState,
 } from 'react';
-import { countryCurrency } from '../libs/values';
-import UserSchema from '../schemas/UserSchema';
-import AddressSection from './sections/AddressSection';
-import EmailSection from './sections/EmailSection';
-import FileSection from './sections/FileSection';
-import GeneralSection from './sections/GeneralSection';
-import LanguageSection from './sections/LanguageSection';
-import PhoneSection from './sections/PhoneSection';
-import ProfessionalSection from './sections/ProfessionalSection';
-import ProfileSection from './sections/ProfileSection';
+import { countryCurrency } from '../../libs/values';
+import UserSchema from '../../schemas/UserSchema';
+import FormButton from '../FormButton';
+import AddressSection from '../sections/AddressSection';
+import EmailSection from '../sections/EmailSection';
+import FileSection from '../sections/FileSection';
+import GeneralSection from '../sections/GeneralSection';
+import LanguageSection from '../sections/LanguageSection';
+import PhoneSection from '../sections/PhoneSection';
+import ProfessionalSection from '../sections/ProfessionalSection';
+import ProfileSection from '../sections/ProfileSection';
 
 const UserSchemaValidator = new SchemaValidator({
   // Returns field attributes.
@@ -145,13 +145,12 @@ function UserForm({ onSubmit, values }) {
                     ))}
                   </select>
                   <div className="input-group-append">
-                    <Button
-                      className="btn btn-secondary"
+                    <FormButton
                       disabled={!modifications}
                       onClick={() => { form.reset([modifications]); }}
                     >
                       Reset field
-                    </Button>
+                    </FormButton>
                   </div>
                 </div>
               </div>
@@ -181,19 +180,18 @@ function UserForm({ onSubmit, values }) {
                   <div className="badge badge-success mr-3">SUBMITTED</div>
                 ) : null}
 
-                <Button
-                  className="btn btn-secondary mr-2"
+                <FormButton
+                  className="mr-1"
                   type="reset"
                 >
                   <i className="fas fa-fw fa-undo-alt mr-1" />
                   Reset
-                </Button>
+                </FormButton>
 
-                <Button
-                  className="btn btn-secondary mr-2"
+                <FormButton
+                  className="mr-1"
                   disabled={form.validated || form.validating}
                   onClick={form.validate}
-                  type="button"
                 >
                   {form.validating ? (
                     <i className="fas fa-fw fa-spinner fa-spin mr-1" />
@@ -201,10 +199,10 @@ function UserForm({ onSubmit, values }) {
                     <i className="fas fa-fw fa-check mr-1" />
                   )}
                   Validate
-                </Button>
+                </FormButton>
 
-                <Button
-                  className="btn btn-primary"
+                <FormButton
+                  color="primary"
                   type="submit"
                 >
                   {form.failedCount > 0 ? (
@@ -226,7 +224,7 @@ function UserForm({ onSubmit, values }) {
                       Submit
                     </>
                   )}
-                </Button>
+                </FormButton>
 
               </div>
             </div>

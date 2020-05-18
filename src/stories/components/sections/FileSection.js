@@ -23,13 +23,11 @@
  *
  */
 
-import {
-  Button,
-  useFieldArray,
-} from '@jalik/react-form';
+import { useFieldArray } from '@jalik/react-form';
 import prettyBytes from 'pretty-bytes';
 import React from 'react';
 import { FormGroup } from 'reactstrap';
+import FormButton from '../FormButton';
 import FormError from '../FormError';
 import FormInput from '../FormInput';
 
@@ -77,12 +75,9 @@ function FileSection() {
             <div className="input-group">
               <FormInput name={`files[${index}].name`} />
               <div className="input-group-append">
-                <Button
-                  className="btn btn-secondary"
-                  onClick={files.handleRemove(index)}
-                >
+                <FormButton onClick={files.handleRemove(index)}>
                   <i className="fas fa-fw fa-trash" />
-                </Button>
+                </FormButton>
               </div>
             </div>
             <div className="form-text">

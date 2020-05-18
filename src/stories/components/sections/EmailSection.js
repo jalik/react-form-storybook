@@ -24,13 +24,13 @@
  */
 
 import {
-  Button,
   useFieldArray,
   useFormContext,
 } from '@jalik/react-form';
 import React from 'react';
 import { FormGroup } from 'reactstrap';
 import { parseBoolean } from '../../libs/utils';
+import FormButton from '../FormButton';
 import FormError from '../FormError';
 import FormInput from '../FormInput';
 
@@ -70,20 +70,14 @@ function EmailSection() {
       <legend>Emails</legend>
 
       <div className="btn-group mb-3">
-        <Button
-          className="btn btn-secondary"
-          onClick={emails.handleAppend}
-        >
+        <FormButton onClick={emails.handleAppend}>
           <i className="fas fa-fw fa-plus-circle mr-1" />
           Append
-        </Button>
-        <Button
-          className="btn btn-secondary"
-          onClick={emails.handlePrepend}
-        >
+        </FormButton>
+        <FormButton onClick={emails.handlePrepend}>
           <i className="fas fa-fw fa-plus-circle mr-1" />
           Prepend
-        </Button>
+        </FormButton>
       </div>
 
       {emails.fields.length > 0 ? (
@@ -98,26 +92,21 @@ function EmailSection() {
                 type="email"
               />
               <div className="input-group-append">
-                <Button
-                  className="btn btn-secondary"
+                <FormButton
                   disabled={index === emails.fields.length - 1}
                   onClick={handleMoveDown(index)}
                 >
                   <i className="fas fa-fw fa-arrow-circle-down" />
-                </Button>
-                <Button
-                  className="btn btn-secondary"
+                </FormButton>
+                <FormButton
                   disabled={index === 0}
                   onClick={handleMoveUp(index)}
                 >
                   <i className="fas fa-fw fa-arrow-circle-up" />
-                </Button>
-                <Button
-                  className="btn btn-secondary"
-                  onClick={emails.handleRemove(index)}
-                >
+                </FormButton>
+                <FormButton onClick={emails.handleRemove(index)}>
                   <i className="fas fa-fw fa-trash" />
-                </Button>
+                </FormButton>
               </div>
             </div>
             <div className="mt-2">

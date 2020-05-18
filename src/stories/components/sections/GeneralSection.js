@@ -23,13 +23,11 @@
  *
  */
 
-import {
-  Button,
-  useFormContext,
-} from '@jalik/react-form';
+import { useFormContext } from '@jalik/react-form';
 import React, { useState } from 'react';
 import { FormGroup } from 'reactstrap';
 import { checkUsernameAsync } from '../../libs/checks';
+import FormButton from '../FormButton';
 import FormError from '../FormError';
 import FormField from '../FormField';
 import FormInput from '../FormInput';
@@ -82,17 +80,13 @@ function GeneralSection() {
                 // validator={checkPassword}
               />
               <div className="input-group-append">
-                <Button
-                  className="btn btn-secondary"
-                  onClick={togglePasswordVisible}
-                  type="button"
-                >
+                <FormButton onClick={togglePasswordVisible}>
                   {passwordVisible ? (
                     <i className="fas fa-fw fa-eye-slash" />
                   ) : (
                     <i className="fas fa-fw fa-eye" />
                   )}
-                </Button>
+                </FormButton>
               </div>
             </div>
             <FormError name="passwordConfirm" />
