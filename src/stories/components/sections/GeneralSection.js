@@ -29,13 +29,10 @@ import {
 } from '@jalik/react-form';
 import React, { useState } from 'react';
 import { FormGroup } from 'reactstrap';
-import {
-  checkPassword,
-  checkUsernameAsync,
-} from '../../libs/checks';
+import { checkUsernameAsync } from '../../libs/checks';
 import FormError from '../FormError';
 import FormField from '../FormField';
-import FormControl from './FormControl';
+import FormInput from '../FormInput';
 
 function GeneralSection() {
   const { getValue } = useFormContext();
@@ -62,7 +59,7 @@ function GeneralSection() {
             <label htmlFor="passwordField">
               Password
             </label>
-            <FormControl
+            <FormInput
               id="passwordField"
               name="password"
               type={passwordVisible ? 'text' : 'password'}
@@ -77,7 +74,7 @@ function GeneralSection() {
               Password confirmation
             </label>
             <div className="input-group">
-              <FormControl
+              <FormInput
                 disabled={getValue('password', '').length === 0}
                 id="passwordConfirmField"
                 name="passwordConfirm"

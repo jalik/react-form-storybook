@@ -31,7 +31,7 @@ import React from 'react';
 import { FormGroup } from 'reactstrap';
 import { phoneCountryCodes } from '../../libs/values';
 import FormError from '../FormError';
-import FormControl from './FormControl';
+import FormInput from '../FormInput';
 
 function parsePhoneNumber(phone) {
   return typeof phone === 'string' && phone.length > 0
@@ -86,17 +86,17 @@ function PhoneSection() {
         phones.fields.map(({ key }, index) => (
           <FormGroup key={key}>
             <div className="input-group">
-              <FormControl
+              <FormInput
                 emptyOptionLabel="Select a code..."
                 name={`phones[${index}].code`}
                 options={phoneCountryCodes}
                 type="select"
               />
-              <FormControl
+              <FormInput
                 name={`phones[${index}].number`}
                 parser={parsePhoneNumber}
               />
-              <FormControl name={`phones[${index}].type`} />
+              <FormInput name={`phones[${index}].type`} />
               <div className="input-group-append">
                 <Button
                   className="btn btn-secondary"

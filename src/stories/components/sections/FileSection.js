@@ -31,7 +31,7 @@ import prettyBytes from 'pretty-bytes';
 import React from 'react';
 import { FormGroup } from 'reactstrap';
 import FormError from '../FormError';
-import FormControl from './FormControl';
+import FormInput from '../FormInput';
 
 function FileSection() {
   const files = useFieldArray({
@@ -75,7 +75,7 @@ function FileSection() {
         files.fields.map(({ key, value }, index) => (
           <FormGroup key={key}>
             <div className="input-group">
-              <FormControl name={`files[${index}].name`} />
+              <FormInput name={`files[${index}].name`} />
               <div className="input-group-append">
                 <Button
                   className="btn btn-secondary"

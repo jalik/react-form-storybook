@@ -26,9 +26,11 @@
 import { Field } from '@jalik/react-form';
 import {
   any,
+  array,
   arrayOf,
   bool,
   node,
+  number,
   oneOfType,
   shape,
   string,
@@ -38,21 +40,35 @@ import {
   CustomInput,
   Input,
 } from 'reactstrap';
+import { generateFieldId } from '../libs/utils';
 
-function FormControl({ children, type, ...props }) {
+function FormInput(
+  {
+    children,
+    id,
+    name,
+    type,
+    value,
+    ...props
+  },
+) {
   return (
     <Field
       {...props}
       component={['checkbox', 'radio', 'range', 'select'].indexOf(type) !== -1 ? CustomInput : Input}
+      id={id || generateFieldId(name, value)}
+      name={name}
       type={type}
+      value={value}
     >
       {children}
     </Field>
   );
 }
 
-FormControl.propTypes = {
+FormInput.propTypes = {
   children: node,
+  id: string,
   name: string.isRequired,
   options: arrayOf(oneOfType([
     any,
@@ -63,12 +79,15 @@ FormControl.propTypes = {
     }),
   ])),
   type: string,
+  value: oneOfType([array, bool, number, string]),
 };
 
-FormControl.defaultProps = {
+FormInput.defaultProps = {
   children: null,
+  id: null,
   options: null,
   type: 'text',
+  value: null,
 };
 
-export default FormControl;
+export default FormInput;

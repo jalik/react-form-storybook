@@ -36,10 +36,9 @@ import {
   genders,
   maritalStatuses,
 } from '../../libs/values';
-import FormField from '../FormField';
 import FormError from '../FormError';
-import FormCheck from '../FormCheck';
-import FormControl from './FormControl';
+import FormField from '../FormField';
+import FormInput from '../FormInput';
 
 function ProfileSection() {
   const { getValue } = useFormContext();
@@ -93,7 +92,7 @@ function ProfileSection() {
             <div className="col">
               <FormGroup>
                 {genders.map(({ label, value }) => (
-                  <FormCheck
+                  <FormInput
                     key={label}
                     label={label}
                     name="profile.gender"
@@ -115,7 +114,7 @@ function ProfileSection() {
             <div className="col">
               <FormGroup>
                 {maritalStatuses.map(({ label, value }) => (
-                  <FormCheck
+                  <FormInput
                     key={label}
                     label={label}
                     name="profile.married"
@@ -136,12 +135,12 @@ function ProfileSection() {
       <FormGroup>
         <label>Color</label>
         <div className="input-group">
-          <FormControl
+          <FormInput
             name="profile.color"
             parser={uppercase}
             type="color"
           />
-          <FormControl
+          <FormInput
             name="profile.color"
             parser={uppercase}
             placeholder="#000000"

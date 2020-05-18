@@ -27,8 +27,7 @@ import React from 'react';
 import { FormGroup } from 'reactstrap';
 import { languages } from '../../libs/values';
 import FormError from '../FormError';
-import FormCheck from '../FormCheck';
-import FormControl from './FormControl';
+import FormInput from '../FormInput';
 
 function LanguageSection() {
   return (
@@ -39,7 +38,7 @@ function LanguageSection() {
         <div className="col">
           <FormGroup>
             {languages.map(({ label, value }) => (
-              <FormCheck
+              <FormInput
                 key={label}
                 label={label}
                 name="languages"
@@ -52,7 +51,7 @@ function LanguageSection() {
         </div>
         <div className="col">
           <FormGroup>
-            <FormControl
+            <FormInput
               multiple
               name="languages"
               type="select"

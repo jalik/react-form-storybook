@@ -32,8 +32,7 @@ import React from 'react';
 import { FormGroup } from 'reactstrap';
 import { parseBoolean } from '../../libs/utils';
 import FormError from '../FormError';
-import FormCheck from '../FormCheck';
-import FormControl from './FormControl';
+import FormInput from '../FormInput';
 
 function parseEmailAddress(email) {
   return typeof email === 'string' && email.length > 0
@@ -91,7 +90,7 @@ function EmailSection() {
         emails.fields.map(({ key, value: email }, index) => (
           <FormGroup key={key}>
             <div className="input-group">
-              <FormControl
+              <FormInput
                 disabled={!getValue(`emails[${index}].enabled`)}
                 name={`emails[${index}].address`}
                 parser={parseEmailAddress}
@@ -122,7 +121,7 @@ function EmailSection() {
               </div>
             </div>
             <div className="mt-2">
-              <FormCheck
+              <FormInput
                 disabled={!email.address}
                 inline
                 label="Enabled"
@@ -131,7 +130,7 @@ function EmailSection() {
                 type="checkbox"
                 value
               />
-              <FormCheck
+              <FormInput
                 disabled={!email.address}
                 inline
                 label="Public"
@@ -140,7 +139,7 @@ function EmailSection() {
                 type="radio"
                 value={false}
               />
-              <FormCheck
+              <FormInput
                 disabled={!email.address}
                 inline
                 label="Private"
@@ -149,7 +148,7 @@ function EmailSection() {
                 type="radio"
                 value
               />
-              <FormCheck
+              <FormInput
                 disabled={!email.address}
                 inline
                 label="Default"

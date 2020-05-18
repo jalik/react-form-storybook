@@ -24,26 +24,38 @@
  */
 
 import {
+  bool,
   node,
+  number,
+  oneOfType,
   string,
 } from 'prop-types';
 import React from 'react';
-import { slugify } from '../libs/utils';
+import { generateFieldId } from '../libs/utils';
 import FormError from './FormError';
-import FormControl from './sections/FormControl';
+import FormInput from './FormInput';
 
-function FormField({ children, label, name, ...props }) {
-  const fieldId = `${slugify(name)}Field`;
+function FormField(
+  {
+    children,
+    label,
+    name,
+    value,
+    ...props
+  },
+) {
+  const id = generateFieldId(name, value);
   return (
     <>
-      <label htmlFor={fieldId}>{label}</label>
-      <FormControl
+      <label htmlFor={id}>{label}</label>
+      <FormInput
         {...props}
-        id={fieldId}
+        id={id}
         name={name}
+        value={value}
       >
         {children}
-      </FormControl>
+      </FormInput>
       <FormError name={name} />
     </>
   );
@@ -53,10 +65,12 @@ FormField.propTypes = {
   children: node,
   label: string.isRequired,
   name: string.isRequired,
+  value: oneOfType([bool, number, string]),
 };
 
 FormField.defaultProps = {
   children: null,
+  value: null,
 };
 
 export default FormField;
