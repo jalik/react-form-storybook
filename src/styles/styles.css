@@ -4,7 +4,7 @@
   color: #CD5C5C !important;
 }
 
-.field-invalid:focus {
+.field-invalid:not([type="range"]):focus {
   box-shadow: 0 0 0 0.2rem rgba(205, 92, 92, 0.25) !important;
 }
 
@@ -13,6 +13,6 @@
   color: #2E8B57 !important;
 }
 
-.field-valid:focus {
+.field-valid:not([type="range"]):focus {
   box-shadow: 0 0 0 0.2rem rgba(46, 139, 87, 0.25) !important;
 }
