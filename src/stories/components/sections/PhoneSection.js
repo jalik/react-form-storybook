@@ -26,6 +26,10 @@
 import { useFieldArray } from '@jalik/react-form';
 import React from 'react';
 import { FormGroup } from 'reactstrap';
+import Alert from 'reactstrap/es/Alert';
+import ButtonGroup from 'reactstrap/es/ButtonGroup';
+import InputGroup from 'reactstrap/es/InputGroup';
+import InputGroupAddon from 'reactstrap/es/InputGroupAddon';
 import { phoneCountryCodes } from '../../libs/values';
 import FormButton from '../FormButton';
 import FormError from '../FormError';
@@ -56,7 +60,7 @@ function PhoneSection() {
     <fieldset>
       <legend>Phones</legend>
 
-      <div className="btn-group mb-3">
+      <ButtonGroup className="mb-3">
         <FormButton onClick={phones.handleAppend}>
           <i className="fas fa-fw fa-plus-circle mr-1" />
           Append
@@ -69,12 +73,12 @@ function PhoneSection() {
           <i className="fas fa-fw fa-plus-circle mr-1" />
           Insert at middle
         </FormButton>
-      </div>
+      </ButtonGroup>
 
       {phones.fields.length > 0 ? (
         phones.fields.map(({ key }, index) => (
           <FormGroup key={key}>
-            <div className="input-group">
+            <InputGroup>
               <FormInput
                 emptyOptionLabel="Select a code..."
                 name={`phones[${index}].code`}
@@ -86,21 +90,21 @@ function PhoneSection() {
                 parser={parsePhoneNumber}
               />
               <FormInput name={`phones[${index}].type`} />
-              <div className="input-group-append">
+              <InputGroupAddon addonType="append">
                 <FormButton onClick={phones.handleRemove(index)}>
                   <i className="fas fa-fw fa-trash" />
                 </FormButton>
-              </div>
-            </div>
+              </InputGroupAddon>
+            </InputGroup>
             <FormError name={`phones[${index}].code`} />
             <FormError name={`phones[${index}].number`} />
             <FormError name={`phones[${index}].type`} />
           </FormGroup>
         ))
       ) : (
-        <div className="alert alert-secondary">
+        <Alert color="secondary">
           You have not added any phone yet.
-        </div>
+        </Alert>
       )}
 
       <FormError name="phones" />

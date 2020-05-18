@@ -27,6 +27,11 @@ import { useFieldArray } from '@jalik/react-form';
 import prettyBytes from 'pretty-bytes';
 import React from 'react';
 import { FormGroup } from 'reactstrap';
+import Alert from 'reactstrap/es/Alert';
+import ButtonGroup from 'reactstrap/es/ButtonGroup';
+import FormText from 'reactstrap/es/FormText';
+import InputGroup from 'reactstrap/es/InputGroup';
+import InputGroupAddon from 'reactstrap/es/InputGroupAddon';
 import FormButton from '../FormButton';
 import FormError from '../FormError';
 import FormInput from '../FormInput';
@@ -59,7 +64,7 @@ function FileSection() {
     <fieldset>
       <legend>Files</legend>
 
-      <div className="btn-group">
+      <ButtonGroup>
         <input
           className="custom-file"
           multiple
@@ -67,20 +72,20 @@ function FileSection() {
           onChange={handleSelectFiles}
           type="file"
         />
-      </div>
+      </ButtonGroup>
 
       {files.fields.length > 0 ? (
         files.fields.map(({ key, value }, index) => (
           <FormGroup key={key}>
-            <div className="input-group">
+            <InputGroup>
               <FormInput name={`files[${index}].name`} />
-              <div className="input-group-append">
+              <InputGroupAddon addonType="append">
                 <FormButton onClick={files.handleRemove(index)}>
                   <i className="fas fa-fw fa-trash" />
                 </FormButton>
-              </div>
-            </div>
-            <div className="form-text">
+              </InputGroupAddon>
+            </InputGroup>
+            <FormText>
               <FormError name={`files[${index}].name`} />
               <FormError name={`files[${index}].size`} />
               <FormError name={`files[${index}].type`} />
@@ -88,13 +93,13 @@ function FileSection() {
                 <span>{value.type}</span>
                 <span className="ml-2">{prettyBytes(value.size)}</span>
               </span>
-            </div>
+            </FormText>
           </FormGroup>
         ))
       ) : (
-        <div className="alert alert-secondary">
+        <Alert color="secondary">
           You have not added any file yet.
-        </div>
+        </Alert>
       )}
 
       <FormError name="files" />

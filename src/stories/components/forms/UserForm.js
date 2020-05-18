@@ -25,7 +25,6 @@
 
 import {
   Form,
-  SchemaValidator,
   useForm,
 } from '@jalik/react-form';
 import {
@@ -36,6 +35,10 @@ import React, {
   useEffect,
   useState,
 } from 'react';
+import Card from 'reactstrap/es/Card';
+import CardBody from 'reactstrap/es/CardBody';
+import CardFooter from 'reactstrap/es/CardFooter';
+import { createSchemaValidator } from '../../libs/utils';
 import { countryCurrency } from '../../libs/values';
 import UserSchema from '../../schemas/UserSchema';
 import FormButton from '../FormButton';
@@ -52,35 +55,7 @@ import PhoneSection from '../sections/PhoneSection';
 import ProfessionalSection from '../sections/ProfessionalSection';
 import ProfileSection from '../sections/ProfileSection';
 
-const UserSchemaValidator = new SchemaValidator({
-  // Returns field attributes.
-  getAttributes(name) {
-    const field = UserSchema.getField(name);
-    return field ? {
-      max: field.getMax(),
-      min: field.getMin(),
-      maxLength: field.getMaxLength(),
-      minLength: field.getMinLength(),
-      pattern: field.getPattern(),
-      required: field.isRequired(),
-    } : null;
-  },
-  // Validate all fields (including nested elements).
-  validate(values) {
-    return new Promise((resolve) => {
-      setTimeout(() => {
-        resolve(UserSchema.getErrors(values));
-      }, 1000);
-    });
-  },
-  // Validate a single field (excluding nested elements).
-  validateField(value, name, values) {
-    return UserSchema.getField(name).validate(value, {
-      context: values,
-      rootOnly: true,
-    });
-  },
-});
+const UserSchemaValidator = createSchemaValidator(UserSchema);
 
 function UserForm({ onSubmit, values }) {
   const [modifications, setModifications] = useState(null);
@@ -108,67 +83,68 @@ function UserForm({ onSubmit, values }) {
   console.log('RENDER UserForm');
 
   return (
-    <Form context={form}>
-      <div className="p-3">
-        <div className="card">
-          <div className="card-body">
-            <div className="row">
-              <div className="col">
-                <GeneralSection />
-                <ProfileSection />
-              </div>
-              <div className="col">
-                <LanguageSection />
-                <AddressSection />
-                <ProfessionalSection />
-              </div>
-              <div className="col">
-                <EmailSection />
-                <PhoneSection />
-                <FileSection />
-              </div>
+    <Form
+      className="m-3"
+      context={form}
+    >
+      <Card>
+        <CardBody>
+          <div className="row">
+            <div className="col">
+              <GeneralSection />
+              <ProfileSection />
+            </div>
+            <div className="col">
+              <LanguageSection />
+              <AddressSection />
+              <ProfessionalSection />
+            </div>
+            <div className="col">
+              <EmailSection />
+              <PhoneSection />
+              <FileSection />
             </div>
           </div>
+        </CardBody>
 
-          <div className="card-footer text-right">
-            <div className="row">
-              <div className="col form-inline">
-                <div className="input-group">
-                  <select
-                    className="custom-select"
-                    disabled={!form.modified}
-                    name="modifications"
-                    onChange={(event) => { setModifications(event.target.value); }}
-                    value={modifications || ''}
+        <CardFooter className="text-right">
+          <div className="row">
+            <div className="col form-inline">
+              <div className="input-group">
+                <select
+                  className="custom-select"
+                  disabled={!form.modified}
+                  name="modifications"
+                  onChange={(event) => { setModifications(event.target.value); }}
+                  value={modifications || ''}
+                >
+                  <option value="">
+                    {`${Object.keys(form.changes).length} modification(s)`}
+                  </option>
+                  {Object.keys(form.changes).map((name) => (
+                    <option key={name}>{name}</option>
+                  ))}
+                </select>
+                <div className="input-group-append">
+                  <FormButton
+                    disabled={!modifications}
+                    onClick={() => { form.reset([modifications]); }}
                   >
-                    <option value="">
-                      {`${Object.keys(form.changes).length} modification(s)`}
-                    </option>
-                    {Object.keys(form.changes).map((name) => (
-                      <option key={name}>{name}</option>
-                    ))}
-                  </select>
-                  <div className="input-group-append">
-                    <FormButton
-                      disabled={!modifications}
-                      onClick={() => { form.reset([modifications]); }}
-                    >
-                      Reset field
-                    </FormButton>
-                  </div>
+                    Reset field
+                  </FormButton>
                 </div>
               </div>
+            </div>
 
-              <div className="col">
-                <FormStateBadges />
-                <FormResetButton />
-                <FormValidateButton />
-                <FormSubmitButton />
-              </div>
+            <div className="col">
+              <FormStateBadges />
+              <FormResetButton />
+              <FormValidateButton />
+              <FormSubmitButton />
             </div>
           </div>
-        </div>
-      </div>
+        </CardFooter>
+      </Card>
     </Form>
   );
 }

@@ -26,6 +26,9 @@
 import { useFormContext } from '@jalik/react-form';
 import React from 'react';
 import { FormGroup } from 'reactstrap';
+import Col from 'reactstrap/es/Col';
+import InputGroup from 'reactstrap/es/InputGroup';
+import Row from 'reactstrap/es/Row';
 import {
   capitalizeWords,
   parseBoolean,
@@ -46,8 +49,8 @@ function ProfileSection() {
     <fieldset>
       <legend>Profile</legend>
 
-      <div className="form-row">
-        <div className="col">
+      <Row form>
+        <Col>
           <FormGroup>
             <FormField
               label="First names"
@@ -55,8 +58,8 @@ function ProfileSection() {
               parser={capitalizeWords}
             />
           </FormGroup>
-        </div>
-        <div className="col">
+        </Col>
+        <Col>
           <FormGroup>
             <FormField
               label="Last name"
@@ -64,10 +67,10 @@ function ProfileSection() {
               parser={uppercase}
             />
           </FormGroup>
-        </div>
-      </div>
-      <div className="form-row">
-        <div className="col">
+        </Col>
+      </Row>
+      <Row form>
+        <Col>
           <FormGroup>
             <FormField
               label="Birth date"
@@ -75,21 +78,21 @@ function ProfileSection() {
               type="date"
             />
           </FormGroup>
-        </div>
-        <div className="col">
+        </Col>
+        <Col>
           <FormGroup>
             <FormField
               label="Birth time"
-              name="profile.birthTime"
               type="time"
+              name="profile.birthTime"
             />
           </FormGroup>
-        </div>
-      </div>
-      <div className="row">
-        <div className="col">
-          <div className="form-row">
-            <div className="col">
+        </Col>
+      </Row>
+      <Row>
+        <Col>
+          <Row form>
+            <Col>
               <FormGroup>
                 {genders.map(({ label, value }) => (
                   <FormInput
@@ -103,15 +106,15 @@ function ProfileSection() {
                 ))}
                 <FormError name="profile.gender" />
               </FormGroup>
-            </div>
-            <div className="col-4 bg-light text-muted rounded text-center py-4">
+            </Col>
+            <Col className="col-4 bg-light text-muted rounded text-center py-4">
               <i className={`fas fa-${getValue('profile.gender')} fa-fw fa-2x`} />
-            </div>
-          </div>
-        </div>
-        <div className="col">
-          <div className="form-row">
-            <div className="col">
+            </Col>
+          </Row>
+        </Col>
+        <Col>
+          <Row>
+            <Col>
               <FormGroup>
                 {maritalStatuses.map(({ label, value }) => (
                   <FormInput
@@ -125,16 +128,16 @@ function ProfileSection() {
                 ))}
                 <FormError name="profile.married" />
               </FormGroup>
-            </div>
-            <div className="col-4 bg-light text-muted rounded text-center py-4">
+            </Col>
+            <Col className="col-4 bg-light text-muted rounded text-center py-4">
               <i className={`fas fa-${getValue('profile.married') ? 'ring' : ''} fa-fw fa-2x`} />
-            </div>
-          </div>
-        </div>
-      </div>
+            </Col>
+          </Row>
+        </Col>
+      </Row>
       <FormGroup>
         <label>Color</label>
-        <div className="input-group">
+        <InputGroup>
           <FormInput
             name="profile.color"
             parser={uppercase}
@@ -145,7 +148,7 @@ function ProfileSection() {
             parser={uppercase}
             placeholder="#000000"
           />
-        </div>
+        </InputGroup>
         <FormError name="profile.color" />
       </FormGroup>
     </fieldset>

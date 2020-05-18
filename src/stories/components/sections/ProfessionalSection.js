@@ -25,6 +25,7 @@
 
 import React from 'react';
 import { FormGroup } from 'reactstrap';
+import InputGroup from 'reactstrap/es/InputGroup';
 import { currencies } from '../../libs/values';
 import FormError from '../FormError';
 import FormField from '../FormField';
@@ -37,7 +38,7 @@ function ProfessionalSection() {
 
       <FormGroup>
         <label>Income</label>
-        <div className="input-group">
+        <InputGroup>
           <FormInput
             name="professional.income.amount"
             max={1000000}
@@ -50,7 +51,7 @@ function ProfessionalSection() {
             options={currencies}
             type="select"
           />
-        </div>
+        </InputGroup>
         <FormError name="professional.income.amount" />
         <FormError name="professional.income.currency" />
       </FormGroup>

@@ -26,6 +26,10 @@
 import { useFormContext } from '@jalik/react-form';
 import React, { useState } from 'react';
 import { FormGroup } from 'reactstrap';
+import Col from 'reactstrap/es/Col';
+import InputGroup from 'reactstrap/es/InputGroup';
+import InputGroupAddon from 'reactstrap/es/InputGroupAddon';
+import Row from 'reactstrap/es/Row';
 import { checkUsernameAsync } from '../../libs/checks';
 import FormButton from '../FormButton';
 import FormError from '../FormError';
@@ -51,8 +55,8 @@ function GeneralSection() {
           validator={checkUsernameAsync}
         />
       </FormGroup>
-      <div className="form-row">
-        <div className="col">
+      <Row form>
+        <Col>
           <FormGroup>
             <label htmlFor="passwordField">
               Password
@@ -65,13 +69,13 @@ function GeneralSection() {
             />
             <FormError name="password" />
           </FormGroup>
-        </div>
-        <div className="col">
+        </Col>
+        <Col>
           <FormGroup>
             <label htmlFor="passwordConfirmField">
               Password confirmation
             </label>
-            <div className="input-group">
+            <InputGroup>
               <FormInput
                 disabled={getValue('password', '').length === 0}
                 id="passwordConfirmField"
@@ -79,7 +83,7 @@ function GeneralSection() {
                 type={passwordVisible ? 'text' : 'password'}
                 // validator={checkPassword}
               />
-              <div className="input-group-append">
+              <InputGroupAddon addonType="append">
                 <FormButton onClick={togglePasswordVisible}>
                   {passwordVisible ? (
                     <i className="fas fa-fw fa-eye-slash" />
@@ -87,12 +91,12 @@ function GeneralSection() {
                     <i className="fas fa-fw fa-eye" />
                   )}
                 </FormButton>
-              </div>
-            </div>
+              </InputGroupAddon>
+            </InputGroup>
             <FormError name="passwordConfirm" />
           </FormGroup>
-        </div>
-      </div>
+        </Col>
+      </Row>
     </fieldset>
   );
 }

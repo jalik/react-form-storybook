@@ -25,6 +25,8 @@
 
 import React from 'react';
 import { FormGroup } from 'reactstrap';
+import Col from 'reactstrap/es/Col';
+import Row from 'reactstrap/es/Row';
 import { languages } from '../../libs/values';
 import FormError from '../FormError';
 import FormInput from '../FormInput';
@@ -34,8 +36,8 @@ function LanguageSection() {
     <fieldset>
       <legend>Languages</legend>
 
-      <div className="row">
-        <div className="col">
+      <Row>
+        <Col>
           <FormGroup>
             {languages.map(({ label, value }) => (
               <FormInput
@@ -48,8 +50,8 @@ function LanguageSection() {
             ))}
             <FormError name="languages" />
           </FormGroup>
-        </div>
-        <div className="col">
+        </Col>
+        <Col>
           <FormGroup>
             <FormInput
               multiple
@@ -59,8 +61,8 @@ function LanguageSection() {
             />
             <FormError name="languages" />
           </FormGroup>
-        </div>
-      </div>
+        </Col>
+      </Row>
     </fieldset>
   );
 }

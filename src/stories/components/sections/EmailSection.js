@@ -29,6 +29,10 @@ import {
 } from '@jalik/react-form';
 import React from 'react';
 import { FormGroup } from 'reactstrap';
+import Alert from 'reactstrap/es/Alert';
+import ButtonGroup from 'reactstrap/es/ButtonGroup';
+import InputGroup from 'reactstrap/es/InputGroup';
+import InputGroupAddon from 'reactstrap/es/InputGroupAddon';
 import { parseBoolean } from '../../libs/utils';
 import FormButton from '../FormButton';
 import FormError from '../FormError';
@@ -69,7 +73,7 @@ function EmailSection() {
     <fieldset>
       <legend>Emails</legend>
 
-      <div className="btn-group mb-3">
+      <ButtonGroup className="mb-3">
         <FormButton onClick={emails.handleAppend}>
           <i className="fas fa-fw fa-plus-circle mr-1" />
           Append
@@ -78,12 +82,12 @@ function EmailSection() {
           <i className="fas fa-fw fa-plus-circle mr-1" />
           Prepend
         </FormButton>
-      </div>
+      </ButtonGroup>
 
       {emails.fields.length > 0 ? (
         emails.fields.map(({ key, value: email }, index) => (
           <FormGroup key={key}>
-            <div className="input-group">
+            <InputGroup>
               <FormInput
                 disabled={!getValue(`emails[${index}].enabled`)}
                 name={`emails[${index}].address`}
@@ -91,7 +95,7 @@ function EmailSection() {
                 placeholder="me@mail.com"
                 type="email"
               />
-              <div className="input-group-append">
+              <InputGroupAddon addonType="append">
                 <FormButton
                   disabled={index === emails.fields.length - 1}
                   onClick={handleMoveDown(index)}
@@ -107,8 +111,8 @@ function EmailSection() {
                 <FormButton onClick={emails.handleRemove(index)}>
                   <i className="fas fa-fw fa-trash" />
                 </FormButton>
-              </div>
-            </div>
+              </InputGroupAddon>
+            </InputGroup>
             <div className="mt-2">
               <FormInput
                 disabled={!email.address}
@@ -153,9 +157,9 @@ function EmailSection() {
           </FormGroup>
         ))
       ) : (
-        <div className="alert alert-secondary">
+        <Alert color="secondary">
           You have not added any email address yet.
-        </div>
+        </Alert>
       )}
 
       <FormError name="emails" />
