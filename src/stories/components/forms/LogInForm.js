@@ -12,13 +12,17 @@ import Card from 'reactstrap/es/Card';
 import CardBody from 'reactstrap/es/CardBody';
 import CardFooter from 'reactstrap/es/CardFooter';
 import FormGroup from 'reactstrap/es/FormGroup';
-import { createSchemaValidator } from '../../libs/utils';
+import {
+  createFieldInitializer,
+  createFieldValidator,
+  createValidator,
+} from '../../libs/utils';
 import FormField from '../FormField';
 import FormResetButton from '../FormResetButton';
 import FormStateBadges from '../FormStateBadges';
 import FormSubmitButton from '../FormSubmitButton';
 
-export const LoginFormSchema = new Schema({
+export const LogInFormSchema = new Schema({
   username: {
     type: 'string',
     required: true,
@@ -31,13 +35,17 @@ export const LoginFormSchema = new Schema({
   },
 });
 
-const LoginFormSchemaValidator = createSchemaValidator(LoginFormSchema);
+const onInitializeField = createFieldInitializer(LogInFormSchema);
+const onValidate = createValidator(LogInFormSchema);
+const onValidateField = createFieldValidator(LogInFormSchema);
 
 function LogInForm({ onSubmit, values }) {
   const form = useForm({
     initialValues: values,
+    onInitializeField,
     onSubmit,
-    schema: LoginFormSchemaValidator,
+    onValidate,
+    onValidateField,
   });
   return (
     <Form

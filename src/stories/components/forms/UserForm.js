@@ -38,7 +38,11 @@ import React, {
 import Card from 'reactstrap/es/Card';
 import CardBody from 'reactstrap/es/CardBody';
 import CardFooter from 'reactstrap/es/CardFooter';
-import { createSchemaValidator } from '../../libs/utils';
+import {
+  createFieldInitializer,
+  createFieldValidator,
+  createValidator,
+} from '../../libs/utils';
 import { countryCurrency } from '../../libs/values';
 import UserSchema from '../../schemas/UserSchema';
 import FormButton from '../FormButton';
@@ -55,15 +59,20 @@ import PhoneSection from '../sections/PhoneSection';
 import ProfessionalSection from '../sections/ProfessionalSection';
 import ProfileSection from '../sections/ProfileSection';
 
-const UserSchemaValidator = createSchemaValidator(UserSchema);
+const onInitializeField = createFieldInitializer(UserSchema);
+const onValidate = createValidator(UserSchema);
+const onValidateField = createFieldValidator(UserSchema);
+
+let renderCount = 0;
 
 function UserForm({ onSubmit, values }) {
   const [modifications, setModifications] = useState(null);
   const form = useForm({
     initialValues: values,
+    onInitializeField,
     onSubmit,
-    // onValidate: validateUserForm,
-    schema: UserSchemaValidator,
+    onValidate,
+    onValidateField,
   });
 
   const country = form.getValue('address.country');
@@ -80,7 +89,8 @@ function UserForm({ onSubmit, values }) {
     }
   }, [form.modified]);
 
-  console.log('RENDER UserForm');
+  console.log('RENDER UserForm', renderCount);
+  renderCount += 1;
 
   return (
     <Form

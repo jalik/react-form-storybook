@@ -3,7 +3,7 @@ import React from 'react';
 
 function FormStateBadges() {
   const {
-    failed, failedError, modified, submitted, submitting, validated,
+    modified, submitError, submitted, submitting, validated,
   } = useFormContext();
   return (
     <>
@@ -23,8 +23,8 @@ function FormStateBadges() {
         <div className="badge badge-info mr-3">SUBMITTING</div>
       ) : null}
 
-      {failed ? (
-        <div className="badge badge-danger mr-3">{`FAILED: ${failedError.message}`}</div>
+      {submitError ? (
+        <div className="badge badge-danger mr-3">{`FAILED: ${submitError.message}`}</div>
       ) : null}
 
       {submitted ? (

@@ -1,18 +1,35 @@
 
-.field-invalid {
+input.field-invalid,
+select.field-invalid,
+textarea.field-invalid {
   border-color: #CD5C5C !important;
   color: #CD5C5C !important;
 }
 
-.field-invalid:not([type="range"]):focus {
+input.field-invalid:not([type="range"]):focus,
+select.field-invalid:not([type="range"]):focus,
+textarea.field-invalid:not([type="range"]):focus {
   box-shadow: 0 0 0 0.2rem rgba(205, 92, 92, 0.25) !important;
 }
 
-.field-valid {
-  border-color: seagreen !important;
-  color: #2E8B57 !important;
+input.field-modified:not(.field-invalid),
+select.field-modified:not(.field-invalid),
+textarea.field-modified:not(.field-invalid) {
+  border-color: #FF8C00 !important;
+  color: #FF8C00 !important;
 }
 
-.field-valid:not([type="range"]):focus {
-  box-shadow: 0 0 0 0.2rem rgba(46, 139, 87, 0.25) !important;
+input.field-modified:not([type="range"]):not(.field-invalid):focus,
+select.field-modified:not([type="range"]):not(.field-invalid):focus,
+textarea.field-modified:not([type="range"]):not(.field-invalid):focus {
+  box-shadow: 0 0 0 0.2rem rgba(255, 140, 0, 0.25) !important;
 }
+
+/*input.field-valid {*/
+/*  border-color: #2E8B57 !important;*/
+/*  color: #2E8B57 !important;*/
+/*}*/
+
+/*input.field-valid:not([type="range"]):focus {*/
+/*  box-shadow: 0 0 0 0.2rem rgba(46, 139, 87, 0.25) !important;*/
+/*}*/
