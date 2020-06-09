@@ -26,8 +26,8 @@
 import 'bootstrap/dist/css/bootstrap.css';
 import React from 'react';
 import '../styles/styles.css';
-import LogInForm from './components/forms/LogInForm';
-import { doSubmit } from './libs/utils';
+import LogInForm from '../components/forms/LogInForm';
+import { doSubmit } from '../libs/utils';
 
 export function LogInFormExample() {
   return (

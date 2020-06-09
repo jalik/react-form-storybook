@@ -29,8 +29,8 @@ import React, {
   useState,
 } from 'react';
 import '../styles/styles.css';
-import UserForm from './components/forms/UserForm';
-import { doSubmit } from './libs/utils';
+import UserForm from '../components/forms/UserForm';
+import { doSubmit } from '../libs/utils';
 
 const initialValues = {
   address: {

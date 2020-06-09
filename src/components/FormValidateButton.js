@@ -17,7 +17,6 @@ function FormValidateButton() {
         fixedWidth
         icon={validating ? faSpinner : faCheck}
         spin={validating}
-        clas
         className="mr-1"
       />
       Validate
