@@ -1,3 +1,6 @@
+import { faCheck } from '@fortawesome/free-solid-svg-icons/faCheck';
+import { faSpinner } from '@fortawesome/free-solid-svg-icons/faSpinner';
+import { FontAwesomeIcon } from '@fortawesome/react-fontawesome';
 import useFormContext from '@jalik/react-form/dist/useFormContext';
 import React from 'react';
 import FormButton from './FormButton';
@@ -10,11 +13,13 @@ function FormValidateButton() {
       disabled={validated || validating}
       onClick={validate}
     >
-      {validating ? (
-        <i className="fas fa-fw fa-spinner fa-spin mr-1" />
-      ) : (
-        <i className="fas fa-fw fa-check mr-1" />
-      )}
+      <FontAwesomeIcon
+        fixedWidth
+        icon={validating ? faSpinner : faCheck}
+        spin={validating}
+        clas
+        className="mr-1"
+      />
       Validate
     </FormButton>
   );

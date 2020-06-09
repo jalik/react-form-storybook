@@ -23,6 +23,8 @@
  *
  */
 
+import { faTrash } from '@fortawesome/free-solid-svg-icons/faTrash';
+import { FontAwesomeIcon } from '@fortawesome/react-fontawesome';
 import { useFieldArray } from '@jalik/react-form';
 import prettyBytes from 'pretty-bytes';
 import React from 'react';
@@ -81,7 +83,11 @@ function FileSection() {
               <FormInput name={`files[${index}].name`} />
               <InputGroupAddon addonType="append">
                 <FormButton onClick={files.handleRemove(index)}>
-                  <i className="fas fa-fw fa-trash" />
+                  <FontAwesomeIcon
+                    fixedWidth
+                    icon={faTrash}
+                    className="mr-1"
+                  />
                 </FormButton>
               </InputGroupAddon>
             </InputGroup>

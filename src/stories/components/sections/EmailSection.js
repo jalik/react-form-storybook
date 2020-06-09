@@ -23,6 +23,11 @@
  *
  */
 
+import { faArrowCircleDown } from '@fortawesome/free-solid-svg-icons/faArrowCircleDown';
+import { faArrowCircleUp } from '@fortawesome/free-solid-svg-icons/faArrowCircleUp';
+import { faPlusCircle } from '@fortawesome/free-solid-svg-icons/faPlusCircle';
+import { faTrash } from '@fortawesome/free-solid-svg-icons/faTrash';
+import { FontAwesomeIcon } from '@fortawesome/react-fontawesome';
 import {
   useFieldArray,
   useFormContext,
@@ -75,11 +80,19 @@ function EmailSection() {
 
       <ButtonGroup className="mb-3">
         <FormButton onClick={emails.handleAppend}>
-          <i className="fas fa-fw fa-plus-circle mr-1" />
+          <FontAwesomeIcon
+            fixedWidth
+            icon={faPlusCircle}
+            className="mr-1"
+          />
           Append
         </FormButton>
         <FormButton onClick={emails.handlePrepend}>
-          <i className="fas fa-fw fa-plus-circle mr-1" />
+          <FontAwesomeIcon
+            fixedWidth
+            icon={faPlusCircle}
+            className="mr-1"
+          />
           Prepend
         </FormButton>
       </ButtonGroup>
@@ -100,16 +113,28 @@ function EmailSection() {
                   disabled={index === emails.fields.length - 1}
                   onClick={handleMoveDown(index)}
                 >
-                  <i className="fas fa-fw fa-arrow-circle-down" />
+                  <FontAwesomeIcon
+                    fixedWidth
+                    icon={faArrowCircleDown}
+                    className="mr-1"
+                  />
                 </FormButton>
                 <FormButton
                   disabled={index === 0}
                   onClick={handleMoveUp(index)}
                 >
-                  <i className="fas fa-fw fa-arrow-circle-up" />
+                  <FontAwesomeIcon
+                    fixedWidth
+                    icon={faArrowCircleUp}
+                    className="mr-1"
+                  />
                 </FormButton>
                 <FormButton onClick={emails.handleRemove(index)}>
-                  <i className="fas fa-fw fa-trash" />
+                  <FontAwesomeIcon
+                    fixedWidth
+                    icon={faTrash}
+                    className="mr-1"
+                  />
                 </FormButton>
               </InputGroupAddon>
             </InputGroup>

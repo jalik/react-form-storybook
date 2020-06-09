@@ -23,6 +23,12 @@
  *
  */
 
+import { faFemale } from '@fortawesome/free-solid-svg-icons/faFemale';
+import { faMale } from '@fortawesome/free-solid-svg-icons/faMale';
+import { faQuestionCircle } from '@fortawesome/free-solid-svg-icons/faQuestionCircle';
+import { faRing } from '@fortawesome/free-solid-svg-icons/faRing';
+import { faRunning } from '@fortawesome/free-solid-svg-icons/faRunning';
+import { FontAwesomeIcon } from '@fortawesome/react-fontawesome';
 import { useFormContext } from '@jalik/react-form';
 import React from 'react';
 import { FormGroup } from 'reactstrap';
@@ -42,6 +48,28 @@ import {
 import FormError from '../FormError';
 import FormField from '../FormField';
 import FormInput from '../FormInput';
+
+function getGenderIcon(gender) {
+  switch (gender) {
+    case 'male':
+      return faMale;
+    case 'female':
+      return faFemale;
+    default:
+      return faQuestionCircle;
+  }
+}
+
+function getMarriedIcon(married) {
+  switch (married) {
+    case true:
+      return faRing;
+    case false:
+      return faRunning;
+    default:
+      return faQuestionCircle;
+  }
+}
 
 function ProfileSection() {
   const { getValue } = useFormContext();
@@ -108,7 +136,12 @@ function ProfileSection() {
               </FormGroup>
             </Col>
             <Col className="col-4 bg-light text-muted rounded text-center py-4">
-              <i className={`fas fa-${getValue('profile.gender')} fa-fw fa-2x`} />
+              <FontAwesomeIcon
+                fixedWidth
+                icon={getGenderIcon(getValue('profile.gender'))}
+                size="2x"
+                className="mr-1"
+              />
             </Col>
           </Row>
         </Col>
@@ -130,7 +163,12 @@ function ProfileSection() {
               </FormGroup>
             </Col>
             <Col className="col-4 bg-light text-muted rounded text-center py-4">
-              <i className={`fas fa-${getValue('profile.married') ? 'ring' : ''} fa-fw fa-2x`} />
+              <FontAwesomeIcon
+                fixedWidth
+                icon={getMarriedIcon(getValue('profile.married'))}
+                size="2x"
+                className="mr-1"
+              />
             </Col>
           </Row>
         </Col>

@@ -1,3 +1,7 @@
+import { faPaperPlane } from '@fortawesome/free-solid-svg-icons/faPaperPlane';
+import { faRedoAlt } from '@fortawesome/free-solid-svg-icons/faRedoAlt';
+import { faSpinner } from '@fortawesome/free-solid-svg-icons/faSpinner';
+import { FontAwesomeIcon } from '@fortawesome/react-fontawesome';
 import useFormContext from '@jalik/react-form/dist/useFormContext';
 import React from 'react';
 import FormButton from './FormButton';
@@ -12,19 +16,29 @@ function FormSubmitButton() {
     >
       {submitCount > 0 ? (
         <>
-          {submitting ? (
-            <i className="fas fa-fw fa-redo-alt fa-spin mr-1" />
-          ) : (
-            <i className="fas fa-fw fa-redo-alt mr-1" />
-          )}
+          <FontAwesomeIcon
+            fixedWidth
+            icon={faRedoAlt}
+            spin={submitting}
+            className="mr-1"
+          />
           {`Retry (${submitCount})`}
         </>
       ) : (
         <>
           {submitting ? (
-            <i className="fas fa-fw fa-spinner fa-spin mr-1" />
+            <FontAwesomeIcon
+              fixedWidth
+              icon={faSpinner}
+              spin
+              className="mr-1"
+            />
           ) : (
-            <i className="fas fa-fw fa-paper-plane mr-1" />
+            <FontAwesomeIcon
+              fixedWidth
+              icon={faPaperPlane}
+              className="mr-1"
+            />
           )}
           Submit
         </>

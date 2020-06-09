@@ -23,6 +23,9 @@
  *
  */
 
+import { faPlusCircle } from '@fortawesome/free-solid-svg-icons/faPlusCircle';
+import { faTrash } from '@fortawesome/free-solid-svg-icons/faTrash';
+import { FontAwesomeIcon } from '@fortawesome/react-fontawesome';
 import { useFieldArray } from '@jalik/react-form';
 import React from 'react';
 import { FormGroup } from 'reactstrap';
@@ -62,15 +65,27 @@ function PhoneSection() {
 
       <ButtonGroup className="mb-3">
         <FormButton onClick={phones.handleAppend}>
-          <i className="fas fa-fw fa-plus-circle mr-1" />
+          <FontAwesomeIcon
+            fixedWidth
+            icon={faPlusCircle}
+            className="mr-1"
+          />
           Append
         </FormButton>
         <FormButton onClick={phones.handlePrepend}>
-          <i className="fas fa-fw fa-plus-circle mr-1" />
+          <FontAwesomeIcon
+            fixedWidth
+            icon={faPlusCircle}
+            className="mr-1"
+          />
           Prepend
         </FormButton>
         <FormButton onClick={handleInsertAt(Math.round(phones.fields.length / 2))}>
-          <i className="fas fa-fw fa-plus-circle mr-1" />
+          <FontAwesomeIcon
+            fixedWidth
+            icon={faPlusCircle}
+            className="mr-1"
+          />
           Insert at middle
         </FormButton>
       </ButtonGroup>
@@ -92,7 +107,11 @@ function PhoneSection() {
               <FormInput name={`phones[${index}].type`} />
               <InputGroupAddon addonType="append">
                 <FormButton onClick={phones.handleRemove(index)}>
-                  <i className="fas fa-fw fa-trash" />
+                  <FontAwesomeIcon
+                    fixedWidth
+                    icon={faTrash}
+                    className="mr-1"
+                  />
                 </FormButton>
               </InputGroupAddon>
             </InputGroup>

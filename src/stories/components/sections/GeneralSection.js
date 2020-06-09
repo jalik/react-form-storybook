@@ -23,6 +23,9 @@
  *
  */
 
+import { faEye } from '@fortawesome/free-solid-svg-icons/faEye';
+import { faEyeSlash } from '@fortawesome/free-solid-svg-icons/faEyeSlash';
+import { FontAwesomeIcon } from '@fortawesome/react-fontawesome';
 import { useFormContext } from '@jalik/react-form';
 import React, { useState } from 'react';
 import { FormGroup } from 'reactstrap';
@@ -85,11 +88,11 @@ function GeneralSection() {
               />
               <InputGroupAddon addonType="append">
                 <FormButton onClick={togglePasswordVisible}>
-                  {passwordVisible ? (
-                    <i className="fas fa-fw fa-eye-slash" />
-                  ) : (
-                    <i className="fas fa-fw fa-eye" />
-                  )}
+                  <FontAwesomeIcon
+                    fixedWidth
+                    icon={passwordVisible ? faEyeSlash : faEye}
+                    className="mr-1"
+                  />
                 </FormButton>
               </InputGroupAddon>
             </InputGroup>

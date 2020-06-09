@@ -1,3 +1,5 @@
+import { faUndoAlt } from '@fortawesome/free-solid-svg-icons/faUndoAlt';
+import { FontAwesomeIcon } from '@fortawesome/react-fontawesome';
 import React from 'react';
 import FormButton from './FormButton';
 
@@ -7,7 +9,11 @@ function FormResetButton() {
       className="ml-1"
       type="reset"
     >
-      <i className="fas fa-fw fa-undo-alt mr-1" />
+      <FontAwesomeIcon
+        fixedWidth
+        icon={faUndoAlt}
+        className="mr-1"
+      />
       Reset
     </FormButton>
   );
