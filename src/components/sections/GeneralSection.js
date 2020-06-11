@@ -33,7 +33,10 @@ import Col from 'reactstrap/es/Col';
 import InputGroup from 'reactstrap/es/InputGroup';
 import InputGroupAddon from 'reactstrap/es/InputGroupAddon';
 import Row from 'reactstrap/es/Row';
-import { checkUsernameAsync } from '../../libs/checks';
+import {
+  checkPassword,
+  checkUsernameAsync,
+} from '../../libs/checks';
 import FormButton from '../FormButton';
 import FormError from '../FormError';
 import FormField from '../FormField';
@@ -68,7 +71,7 @@ function GeneralSection() {
               id="passwordField"
               name="password"
               type={passwordVisible ? 'text' : 'password'}
-              // validator={checkPassword}
+              validator={(v) => checkPassword(v)}
             />
             <FormError name="password" />
           </FormGroup>
@@ -84,7 +87,6 @@ function GeneralSection() {
                 id="passwordConfirmField"
                 name="passwordConfirm"
                 type={passwordVisible ? 'text' : 'password'}
-                // validator={checkPassword}
               />
               <InputGroupAddon addonType="append">
                 <FormButton onClick={togglePasswordVisible}>
