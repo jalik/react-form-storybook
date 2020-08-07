@@ -33,10 +33,6 @@ import Col from 'reactstrap/es/Col';
 import InputGroup from 'reactstrap/es/InputGroup';
 import InputGroupAddon from 'reactstrap/es/InputGroupAddon';
 import Row from 'reactstrap/es/Row';
-import {
-  checkPassword,
-  checkUsernameAsync,
-} from '../../libs/checks';
 import FormButton from '../FormButton';
 import FormError from '../FormError';
 import FormField from '../FormField';
@@ -58,7 +54,6 @@ function GeneralSection() {
         <FormField
           label="Username"
           name="username"
-          validator={checkUsernameAsync}
         />
       </FormGroup>
       <Row form>
@@ -71,7 +66,6 @@ function GeneralSection() {
               id="passwordField"
               name="password"
               type={passwordVisible ? 'text' : 'password'}
-              validator={(v) => checkPassword(v)}
             />
             <FormError name="password" />
           </FormGroup>
