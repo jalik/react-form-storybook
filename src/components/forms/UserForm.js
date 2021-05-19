@@ -129,9 +129,9 @@ function UserForm({ onSubmit, values }) {
                   value={modifications || ''}
                 >
                   <option value="">
-                    {`${Object.keys(form.changes).length} modification(s)`}
+                    {`${Object.keys(form.modifiedFields).length} modification(s)`}
                   </option>
-                  {Object.keys(form.changes).map((name) => (
+                  {Object.keys(form.modifiedFields).map((name) => (
                     <option key={name}>{name}</option>
                   ))}
                 </select>
