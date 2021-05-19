@@ -23,6 +23,7 @@
  *
  */
 
+import { getFieldId } from '@jalik/react-form';
 import {
   bool,
   node,
@@ -31,7 +32,6 @@ import {
   string,
 } from 'prop-types';
 import React from 'react';
-import { generateFieldId } from '../libs/utils';
 import FormError from './FormError';
 import FormInput from './FormInput';
 
@@ -44,7 +44,7 @@ function FormField(
     ...props
   },
 ) {
-  const id = generateFieldId(name, value);
+  const id = getFieldId(name, value);
   return (
     <>
       <label htmlFor={id}>{label}</label>

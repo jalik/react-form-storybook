@@ -84,11 +84,6 @@ export function doSubmit(values) {
   });
 }
 
-export function generateFieldId(name, value = '') {
-  // eslint-disable-next-line no-use-before-define
-  return `${slugify(name)}_${slugify(String(value))}_field`;
-}
-
 export function mapOptionValues(options) {
   return options.map(({ value }) => value);
 }

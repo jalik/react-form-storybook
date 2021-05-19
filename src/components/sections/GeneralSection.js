@@ -59,15 +59,11 @@ function GeneralSection() {
       <Row form>
         <Col>
           <FormGroup>
-            <label htmlFor="passwordField">
-              Password
-            </label>
-            <FormInput
-              id="passwordField"
+            <FormField
+              label="Password"
               name="password"
               type={passwordVisible ? 'text' : 'password'}
             />
-            <FormError name="password" />
           </FormGroup>
         </Col>
         <Col>

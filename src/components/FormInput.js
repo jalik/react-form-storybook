@@ -40,15 +40,12 @@ import {
   CustomInput,
   Input,
 } from 'reactstrap';
-import { generateFieldId } from '../libs/utils';
 
 function FormInput(
   {
     children,
     id,
-    name,
     type,
-    value,
     ...props
   },
 ) {
@@ -56,10 +53,7 @@ function FormInput(
     <Field
       {...props}
       component={['checkbox', 'radio', 'range', 'select'].indexOf(type) !== -1 ? CustomInput : Input}
-      id={id || generateFieldId(name, value)}
-      name={name}
       type={type}
-      value={value}
     >
       {children}
     </Field>
@@ -75,7 +69,7 @@ FormInput.propTypes = {
     shape({
       disabled: bool,
       label: string,
-      value: any.isRequired,
+      value: oneOfType([bool, number, string]).isRequired,
     }),
   ])),
   type: string,
